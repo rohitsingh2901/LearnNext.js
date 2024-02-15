@@ -1,49 +1,72 @@
-'use client' // Resolve Error 1: it specify that this components(its child component) 
-import { useState } from "react";
 import styles from "./page.module.css";
-// 'use client'  We can't declare it here it will always declared at the top
 
 export default function Home() {
-  const [name, setName] = useState("Rohit") //state
-  const name2 = "Rohit" // Variable
-
-  const InnerComponent=()=>{
-    return(
-      
-      <h1>Inner Component</h1>
-    )
-  }
   return (
-    <main className={styles.main}>
-      <h1>Events, function and state</h1>
-      <button onClick={()=>alert("Hello there!!")}>Click here</button> 
-      {/* throws error: If you need interactivity, consider converting part of this to a Client Component. ----------- 1 */}
+    <main>
+      <h1>File and folder | Project structure</h1>
+      <h3>package.json</h3>
+      <p>
+      The `package.json` file is a key part of any Node.js project or JavaScript module. It's a JSON file that lives in the root directory of your project and holds important information about the project.
+      </p>
+      <h3>next.config.js</h3>
+      <p>
+      The `next.config.js` is a configuration file used in Next.js, a popular React framework for building web applications. It allows developers to customize various settings and features of their Next.js projects.
+      </p>
+      <h3>jsconfig.json</h3>
+      <p>
+      The `jsconfig.json` file in a Next.js project is a configuration file that helps your text editor understand the structure of your project. It's particularly useful for enabling absolute imports and module path aliases.
+      </p>
+      <h3>README.md</h3>
+      <p>
+      A `README.md` file is a markdown document that serves as the introductory guide to your project. It's often the first thing people see when they visit your repository on platforms like GitHub.
+      </p>
+      <h3>package-lock.json</h3>
+      <p>
+      The `package-lock.json` file is an automatically generated file in Node.js projects that provides a detailed, deterministic record of the dependency tree.
+      </p>
+      <h3>.gitignore</h3>
+      <p>
+      The `.gitignore` file is a text file placed in your git repository that tells git not to track certain files and folders that you don't want being uploaded to your master repository. It's usually used to avoid committing transient files from your working directory that aren't useful to other collaborators, such as compilation products, temporary files IDEs create, etc.
+      </p>
+      <h3>.eslintrc.json</h3>
+      <p>
+      The `.eslintrc.json` file is a configuration file for ESLint, a tool used to identify and report on patterns found in JavaScript code. This file allows you to customize the rules that ESLint will enforce in your project.
+      </p>
+      <h3>.next folder</h3>
+      <p>
+      The `.next` folder is automatically generated when you build your Next.js application. It contains the compiled version of your application and other information that Next.js uses to run your app.
+      </p>
+      <h3>public folder</h3>
+      <p>
+      The `public` folder in a Next.js project is a special directory where you can place static assets that your web application needs.
+      </p>
+      <h3>src folder</h3>
+      <p>
+      The `src` (short for source) directory in a Next.js project is an optional way to organize your project's source code. It typically contains all the components, pages, styles, and other assets needed for your application.
+      </p>
+      <h3>layout.js</h3>
+      <p>
+      In Next.js, `layout.js` is typically used to define a layout component that wraps your application's pages. It allows you to define a consistent structure and appearance for all your pages, making it easy to maintain a consistent user experience.
+      A layout in Next.js is a shared user interface structure used across multiple pages. It serves as the wrapping container for your pages, preserving their state and interactivity during navigation without triggering unnecessary re-renders. Layouts can also be nested to create complex UI structures.
+      </p>
+      <h3>page.js</h3>
+      <p>
+      In Next.js, a `page.js` file represents a page in your web application. Each `.js` file in the `pages` directory corresponds to a route based on its file name.
+      </p>
+      <h3>dependencies vs devDependencies</h3>
+      <p>
+      In a JavaScript or Node.js project, `dependencies` and `devDependencies` in the `package.json` file refer to two types of packages that your project needs, but they serve different purposes:
+
+      1. dependencies: These are the packages or modules that your project needs to run correctly. They are installed when you or someone else installs your package. These could be libraries that your application needs to function effectively.
+
+      2. devDependencies: These are the packages or modules that are only needed during the development process. They are not installed when someone installs your package. These could be testing frameworks, bundlers, or linters.
+      </p>
 
 
 
-      <InnerComponent/>
-      {InnerComponent()}
+
+
+
     </main>
   );
 }
-
-/* 
-1. use client
-
-The use client directive in Next.js is used to define a component as a client-side rendering entity. By default, all components in Next.js 13 inside the app folder are server components. Server components cannot use client features such as useState, useEffect, etc.
-When you add the use client directive at the top of a file (before any imports), you’re declaring a boundary between a Server and Client Component modules1. This means that the component should be rendered and executed within the user’s browser environment, rather than on the server2
-
-2. State vs Variable
-
--> Lifetime: A variable’s value persists only for the duration of its function’s execution1. Once the function exits, the variable “disappears” and its value is lost. On the other hand, state variables in React are preserved by the framework. Even after the function exits, the state variable retains its value.
--> Reactivity: When a variable’s value changes, it doesn’t cause the component to re-render23. However, when a state variable’s value changes (using setState or useState), React will re-render the component.
-
-
-3. Difference b/w <InnerComponent/> and {InnerComponent()}
-
-When you use <Component /> in your JSX, you are treating it as a React component. This means that React will create an instance of the component and manage its state and lifecycle. It can accept props just like any other React component. This is the recommended way to use components in React.
-
-When you use {Component()} in your JSX, you are treating it as a JavaScript function call. It is not treated as a React component. This means that React will execute the Component function immediately and render the JSX returned by that function. It does not have access to React's state management or lifecycle methods.
-
-In this case, you cannot pass props directly to Component, and it will not behave like a typical React component. It's just a function that returns JSX, and it gets called whenever your main component (Home in this case) re-renders.
-*/
