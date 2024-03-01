@@ -1,19 +1,31 @@
+"use client"
+import Link from "next/link";
 import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+  const navigate = (path) =>{
+    router.push(path);
+  }
   return (
     <main>
-      <h1>Basic Routing | Create new Page </h1>
-      <h3>How to create new page?</h3>
+      <h1>Link and Navigation</h1>
+      <h3>Linking</h3>
       <p>
-      Creating a new page in Next.js is straightforward and involves the following steps:<br></br>
-      1. Create a New folder: Inside the root directory of your project, create a new folder whose name is same as your route. The name of this folder will correspond to the route for the new page.<br></br>
-      2. Create a New File: Inside that folder of your project, create a new page.js file.<br></br>
-      3. Export a React Component: In the newly created page.js file, define a React component and export it as the default export. This component will be the content of your new page.<br></br>
-      Example:<br></br>
-      - localhost:3000/login<br></br>
-      - src/login/page.js<br></br>
-      </p>
+      Linking is done using the Link component provided by Next.js. This component allows you to do client-side navigation between two pages in the same Next.js app. Client-side navigation means that the page transition happens using JavaScript, which is faster than the default navigation done by the browser.
+      </p><br/>
+      <Link href="/login">Go to Login Page</Link>
+      <br/><br/>
+      <Link href="/about">Go to About Page</Link>
+      <br/><br/>
+      <h3>Navigation</h3>
+      <p>
+      Navigation in Next.js can be done imperatively using the `next/navigation` package. This allows you to programmatically change the route, for example, in response to a button click/event listner.
+      </p><br/>
+      <button onClick={()=>{navigate("/login")}}>Login Page</button>
+      <br/><br/>
+      <button onClick={()=>{navigate("/about")}}>About Page</button>
     </main>
   );
 }
