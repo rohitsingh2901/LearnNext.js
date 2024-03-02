@@ -10,22 +10,14 @@ export default function Home() {
   }
   return (
     <main>
-      <h1>Link and Navigation</h1>
-      <h3>Linking</h3>
+      <h1>Nested Routing</h1>
       <p>
-      Linking is done using the Link component provided by Next.js. This component allows you to do client-side navigation between two pages in the same Next.js app. Client-side navigation means that the page transition happens using JavaScript, which is faster than the default navigation done by the browser.
-      </p><br/>
-      <Link href="/login">Go to Login Page</Link>
-      <br/><br/>
-      <Link href="/about">Go to About Page</Link>
-      <br/><br/>
-      <h3>Navigation</h3>
-      <p>
-      Navigation in Next.js can be done imperatively using the `next/navigation` package. This allows you to programmatically change the route, for example, in response to a button click/event listner.
-      </p><br/>
-      <button onClick={()=>{navigate("/login")}}>Login Page</button>
-      <br/><br/>
-      <button onClick={()=>{navigate("/about")}}>About Page</button>
+      Nested routing in Next.js is a way to create complex URL structures by nesting folders inside each other. Each folder represents a route segment that maps to a URL segment. Here's how it works:<br/>
+      - Next.js uses a file-system based router where folders are used to define routes.<br/>
+      - To create a nested route, you can nest folders inside each other.<br/>
+      - Each folder represents a route segment that maps to a URL segment.- A special `page.js` file is used to make route segments publicly accessible.
+      </p>
+
     </main>
   );
 }
