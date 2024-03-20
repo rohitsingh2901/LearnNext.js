@@ -4,64 +4,88 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <main>
-      <h1>Rendering in next.js</h1>
+      <h1>Client Side vs PreRendering</h1>
+      <br />
+      <h3>How to know rendering type ?</h3>
       <p>
-        Rendering in Next.js refers to the process of converting your
-        application code into a user interface that can be interacted with.
-        There are three main types of rendering in Next.js:
+        In Next.js, the rendering type of a page is determined by the data
+        fetching method used in the page component. Here's how you can identify
+        the rendering type: <br />
+        1. Static Generation: If a page uses the `getStaticProps` function, it's
+        using Static Generation¹. This means the page's HTML is generated at
+        build time and will be reused on each request. <br />
+        2. Server-side Rendering: If a page uses the `getServerSideProps`
+        function, it's using Server-side Rendering². This means the page's HTML
+        is generated on each request. <br />
+        3. Client-side Rendering: If a page does not use `getStaticProps` or
+        `getServerSideProps`, it's using Cl ient-side Rendering. This means the
+        page's HTML is not generated in advance, but is instead generated in the
+        browser when the page is loaded.
       </p>
-      <li>
-        1. Pre-rendering: By default, Next.js pre-renders every page. This means
-        that Next.js generates HTML for each page in advance, instead of having
-        it all done by client-side JavaScript. Pre-rendering can result in
-        better performance and SEO. There are two forms of pre-rendering in
-        Next.js:
-        <br />
-        - Static Generation: The HTML is generated at build time and will be
-        reused on each request.
-        <br />- Server-side Rendering: The HTML is generated on each request.
-      </li>
-      <li>
-        2. Client-side Rendering (CSR): Some parts of a page can be rendered
-        entirely by client-side JavaScript¹. In Next.js, there are two ways you
-        can implement client-side rendering: - Using React's `useEffect()` hook
-        inside your pages instead of the server-side rendering methods
-        (`getStaticProps` and `getServerSideProps`).
-        <br />
-        - Using a data fetching library like SWR or TanStack Query to fetch data
-        on the client.
-        <br />
-      </li>
-      <li>
-        3. Hybrid Rendering: Next.js allows you to create hybrid applications
-        where parts of your code can be rendered on the server or the client.
-        You can use Static Generation for most pages and using Server-side
-        Rendering for others.
-      </li><br /><br />
-
-      <h3>Pre-rendering in Next.js</h3>
+      <br />
+      <h3>Why server side rendering is important?</h3>
       <p>
-        Pre-rendering in Next.js is the process where HTML for each page is
-        generated in advance, instead of being entirely done by client-side
-        JavaScript. This can result in better performance and SEO¹. Each
-        generated HTML is associated with minimal JavaScript code necessary for
-        that page. When a page is loaded by the browser, its JavaScript code
-        runs and makes the page fully interactive. There are two forms of
-        pre-rendering in Next.js: 
+        Server-side rendering (SSR) is important for several reasons:
+        <br />
+        1. Improved Performance: With SSR, the server sends a fully rendered
+        page to the client, so the browser can start displaying the content
+        faster. This can lead to a better user experience, especially on slower
+        networks or devices.
+        <br />
+        2. Search Engine Optimization (SEO): Search engines can crawl and index
+        server-rendered pages more easily. While many search engines can index
+        client-rendered content, server-rendered content is generally more
+        reliable for SEO.
+        <br />
+        3. Social Sharing: When users share your website's URL on social media
+        platforms, these platforms use meta tags in the HTML to generate
+        previews. SSR ensures that these meta tags are present even when
+        JavaScript is disabled, improving the reliability of social sharing.
+        <br />
+        4. First Contentful Paint (FCP): SSR can improve the FCP, a key metric
+        for measuring perceived performance. It marks the point when the first
+        piece of content from the DOM is rendered.
       </p>
-      <li>
-      1. Static Generation: The HTML is generated at build time and will be reused on each request. This is
-        useful for pages that can be pre-rendered ahead of a user's request. You
-        can also add and update the HTML by re-running the build. 
-      </li>
-      <li>
-      2.Server-side Rendering: The HTML is generated on each request. This
-        is useful for pages that show frequently updated data, and for pages
-        that include user-specific data. You can choose which pre-rendering
-        form to use for each page in your application¹. Some pages could use
-        static generation and others could use server-side rendering. This
-        flexibility is one of the reasons why Next.js has become popular.
-      </li>
+      <br />
+      <h3>How SEO works ? and how server side rendering helps better SEO?</h3>
+      <p>
+        Search Engine Optimization (SEO) is a process used by marketers to
+        optimize a website for search engines like Google, Bing, Yahoo, and
+        others. SEO works by optimizing a website's content, conducting keyword
+        research, and earning inbound links to increase that content’s ranking
+        and the website’s visibility. The goal of SEO is to increase organic
+        traffic to the website.
+        <br />
+        Here's a simplified explanation of how SEO works:
+        <br />
+        1. Keyword Research: Identify the terms and phrases (keywords) that can
+        generate qualified traffic to your website.
+        <br />
+        2. Content Optimization: Make certain changes to your website design and
+        content that make your site more attractive to a search engine.
+        <br />
+        3. Link Building: Earn inbound links from other websites to increase
+        your site's credibility and visibility.
+        <br />
+        4. Technical SEO: Ensure your site is crawlable and indexable by search
+        engines, and that it provides a good user experience.
+        <br />
+        Server-side rendering (SSR) is where your site’s content is rendered on
+        the web server rather than the browser. SSR can significantly improve
+        SEO in several ways:
+        <br />
+        1. Improved Crawling and Indexing: SSR provides fully rendered content
+        for complete indexing, making it easier for search engines to crawl and
+        index web pages.
+        <br />
+        2. Faster Page Load Times: SSR results in faster page loading times,
+        which search engines reward in rankings.
+        <br />
+        3. Avoiding SEO Pitfalls: SSR avoids certain SEO pitfalls associated
+        with client-side rendering, such as JavaScript pages being read as a
+        blank screen by search engines.
+        <br />
+      </p>
     </main>
   );
 }
