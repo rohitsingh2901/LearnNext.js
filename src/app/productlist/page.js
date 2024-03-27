@@ -1,3 +1,5 @@
+import ProductButton from "./ProductButton";
+
 async function productList() {
   let data = await fetch("https://dummyjson.com/products");
   data = await data.json();
@@ -14,6 +16,10 @@ export default async function Products() {
         <div key={product.id}>
           <p>Name: {product.title}</p>
           <p>Price: {product.price}</p>
+          {/* <button onClick={alert("Hello World")}>Click Me</button>  throw client component error */}
+
+          {/* creact client component and import in server component */}
+          <ProductButton price={product.price}/> 
           <br />
         </div>
       ))}
